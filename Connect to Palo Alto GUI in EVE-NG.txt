@@ -1,0 +1,16 @@
+
+-- Stratup Configs for Docker --
+
+ip addr add 192.168.1.10/24 dev eth0 || true
+ip route add default via 192.168.1.10 || true
+
+
+-- Palo --
+
+admin@PA-VM> configure
+admin@PA-VM# set deviceconfig system type static
+admin@PA-VM# set deviceconfig system ip-address 192.168.1.254 netmask 255.255.255.0
+admin@PA-VM# commit
+
+admin@PA-VM> show interface management 
+admin@PA-VM> ping host 192.168.1.10
