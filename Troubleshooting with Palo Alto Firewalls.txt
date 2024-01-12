@@ -1,11 +1,122 @@
 
+L1-L2: Physical & Media issues
+L3: Routing issues
+L4: Firewalling
+L7: Application (basics)
+
+
+
 -- Hardware Troubleshooting --
 
+- Chassis Health Check -
+
+admin@PA-220> show system state filter chassis.leds
+admin@PA-220> show system environmentals
+
+
+- Interface Flapping -
+
+Monitor / System: ( eventid eq link-change ) and ( object eq 'ethernet1/1' )
+
+admin@PA-220> show interface ethernet1/1
+admin@PA-220> show interface ethernet1/1 | match link
+admin@PA-220> show log system query equal "( eventid eq link-change ) and ( object eq 'ethernet1/1' )" direction equal backward
+
+
+- Chassis & Software Performance -
+
+Find the Root Cause
+· Review Active Sessions & New Sessions establish rate
+· Review the chassis Throughput
+· Analyze global counters delta and look for excessive drop value
+· Analyze the CPU load
+· Try to spot sessions responsible of performance problems
+· Eliminate or offload the sessions once you found them
+
+
+- Excessive Sessions or Throughput- 
+
+admin@PA-220> show session info  
+
+
+- Excessive Drop Counters -
+
+admin@PA-220> show counter global filter severity warn delta yes
+
+flow_tcp_non_syn_drop  :  Often caused by routing asymmetry
+flow_policy_deny       :  Caused by denied packets
+log_loss_throttle      :  Caused by a high rate of logging
+flow_ipfrag_recv       :  Caused by IP fragments
+
+
+- CPU & Buffer Usage -
+
+admin@PA-220> show running resource-monitor second
+admin@PA-220> show running resource-monitor ingress-backlogs
+
+
+flow_slowpath  :  Session Creation (Route & Rules lookup)
+flow_mgt       :  Session Installation & Flush
+dfa_result     :  APP-ID Signature matching
+aho_result     :  Threat Signature matching
+
+
+
+- CheatSheet -
+
+> show system state filter chassis.leds
+> show system environmentals
+> show log system query equal "( eventid eq link-change ) and ( object eq 'ethernet1/1' )" direction equal backward 
+> show interface <interface_name>
+
+> show session info 
+> show counter global filter severity warn delta yes
+> show running resource-monitor second 
+> show running resource-monitor ingress-backlogs
 
 
 
 -- Layer 2 Troubleshooting --
 
+
+
+
+# Layer 3 Troubleshooting
+
+
+
+
+
+# Layer 4-7 Troubleshooting
+
+
+
+
+
+# Tunnel Troubleshooting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Layer 2 Troubleshooting --
 
 
 
