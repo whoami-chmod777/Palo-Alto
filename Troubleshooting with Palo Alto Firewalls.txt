@@ -78,10 +78,14 @@ aho_result     :  Threat Signature matching
 
 -- Layer 2 Troubleshooting --
 
+Check the bridging table to make sure L2 learning is happening
+Make sure you don't exceed the bridging table limit
+
+admin@PA-220> show mac all
 
 
 
-# Layer 3 Troubleshooting
+-- Layer 3 Troubleshooting --
 
 
 
