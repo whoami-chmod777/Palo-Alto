@@ -1,0 +1,40 @@
+
+-- Management Options --
+
+· Local
+· Panorama
+· CLI
+· API
+
+
+-- Management Port --
+
+Preconfigured with 192.168.1.1/24 for HTTPS
+admin//admin
+
+
+-- CLI Enhancements --
+
+Use find to figure out the command syntax
+Use "?" to get help on command options and parameters
+Use the "Tab" key for command auto-completion
+Use the "|" symbol along with match or except for output filtering
+
+
+-- Examples --
+
+FIW001> find command keyword network
+
+FIW001> set cli config-output-format set
+
+FIW001(passive)> show system info
+FIW001(passive)> show routing route
+
+FIW001(passive)> show arp all
+FIW001(passive)> show arp ethernet1/3.100
+
+FIW001(passive)> ping host 20.1.1.1
+FIW001(passive)> ping count 2 host host 20.1.1.1
+FIW001(passive)> ping source 20.1.1.1 host 20.1.1.2
+
+FIW001(passive)> test nat-policy-match destination 20.1.1.2 source 192.168.10.2 destination-port 88
